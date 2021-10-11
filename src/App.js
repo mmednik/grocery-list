@@ -26,9 +26,16 @@ function App() {
     setList(filteredList);
   }
 
-  function makeEditableHandler(e) {
-    console.log(e.target)
+  function makeEditableHandler() {
     setEditable(true);
+  }
+
+  function keyPressHandle(e, i) {
+    if (e.key === "Enter") {
+      setEditable(!editable);
+      const copyList = [...list];
+      copyList[i].name = e.target.value;
+    }
   }
 
   return (
@@ -42,11 +49,13 @@ function App() {
             return (
               <Item
                 key={`${i}${v.name}${v.calories}`}
+                index={i}
                 name={v.name}
                 calories={v.calories}
+                editable={editable}
                 onClick={removeItemHandler}
                 onDoubleClick={makeEditableHandler}
-                editable={editable}
+                onKeyPress={keyPressHandle}
               />
             );
           })}

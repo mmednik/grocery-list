@@ -10,12 +10,20 @@ import {
 import { DeleteIcon } from "@chakra-ui/icons";
 import "./Item.scss";
 
-function Item({ name, calories, onClick, onDoubleClick, editable }) {
+function Item({
+  index,
+  name,
+  calories,
+  editable,
+  onClick,
+  onDoubleClick,
+  onKeyPress,
+}) {
   return (
     <Flex>
       <Stat>
         {editable ? (
-          <Input value={name} />
+          <Input defaultValue={name} onKeyPress={(e) => onKeyPress(e, index)} />
         ) : (
           <StatNumber onDoubleClick={onDoubleClick}>{name}</StatNumber>
         )}
