@@ -5,7 +5,6 @@ import {
   VStack,
   Center,
   Heading,
-  Button,
 } from "@chakra-ui/react";
 import theme from "./theme";
 import "./App.scss";
@@ -15,16 +14,16 @@ const initList = [
   { name: "aceite", calories: 45 },
   { name: "almendras", calories: 11 },
   { name: "arroz", calories: 250 },
-  { name: "azúcar", calories: 20 },
+  { name: "azucar", calories: 20 },
 ];
 
 function App() {
   const [list, setList] = useState(initList);
 
-  const removeUnhealthyHandler = (e) => {
-    const filteredList = list.filter((v) => v.calories <= 50);
+  function removeItemHandler(e) {
+    const filteredList = list.filter((v) => v.name !== e.target.name);
     setList(filteredList);
-  };
+  }
 
   return (
     <ChakraProvider theme={theme}>
@@ -39,12 +38,10 @@ function App() {
                 key={`${i}${v.name}${v.calories}`}
                 name={v.name}
                 calories={v.calories}
+                onClick={removeItemHandler}
               />
             );
           })}
-          <Button onClick={removeUnhealthyHandler} colorScheme="red">
-            Remove unhealthy ingredients
-          </Button>
         </VStack>
       </Container>
     </ChakraProvider>
