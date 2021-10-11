@@ -20,7 +20,7 @@ function Item({
   onKeyPress,
 }) {
   return (
-    <Flex>
+    <Flex alignItems="center">
       <Stat>
         {editable ? (
           <Input defaultValue={name} onKeyPress={(e) => onKeyPress(e, index)} />
@@ -34,6 +34,7 @@ function Item({
         aria-label="Remove item"
         icon={<DeleteIcon />}
         onClick={onClick}
+        colorScheme="red"
       />
     </Flex>
   );

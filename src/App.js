@@ -8,13 +8,14 @@ import {
 } from "@chakra-ui/react";
 import theme from "./theme";
 import "./App.scss";
+import NewItem from "./components/NewItem";
 import Item from "./components/Item";
 
 const initList = [
-  { name: "aceite", calories: 45 },
-  { name: "almendras", calories: 11 },
-  { name: "arroz", calories: 250 },
-  { name: "azucar", calories: 20 },
+  { name: "oil", calories: 45 },
+  { name: "almonds", calories: 11 },
+  { name: "rice", calories: 250 },
+  { name: "sugar", calories: 20 },
 ];
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
           <Center>
             <Heading>Grocery List</Heading>
           </Center>
+          <NewItem />
           {list.map((v, i) => {
             return (
               <Item
