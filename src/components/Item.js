@@ -1,19 +1,24 @@
 import React from "react";
 import {
   Flex,
+  Input,
   Stat,
   StatNumber,
   StatHelpText,
   IconButton,
 } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
-import "./GroceryItem.scss";
+import "./Item.scss";
 
-function GroceryItem({ name, calories, onClick }) {
+function Item({ name, calories, onClick, onDoubleClick, editable }) {
   return (
     <Flex>
       <Stat>
-        <StatNumber>{name}</StatNumber>
+        {editable ? (
+          <Input value={name} />
+        ) : (
+          <StatNumber onDoubleClick={onDoubleClick}>{name}</StatNumber>
+        )}
         <StatHelpText>{calories} calories</StatHelpText>
       </Stat>
       <IconButton
@@ -26,4 +31,4 @@ function GroceryItem({ name, calories, onClick }) {
   );
 }
 
-export default GroceryItem;
+export default Item;

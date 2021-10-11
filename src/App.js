@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import theme from "./theme";
 import "./App.scss";
-import GroceryItem from "./components/GroceryItem";
+import Item from "./components/Item";
 
 const initList = [
   { name: "aceite", calories: 45 },
@@ -19,10 +19,16 @@ const initList = [
 
 function App() {
   const [list, setList] = useState(initList);
+  const [editable, setEditable] = useState(false);
 
   function removeItemHandler(e) {
     const filteredList = list.filter((v) => v.name !== e.target.name);
     setList(filteredList);
+  }
+
+  function makeEditableHandler(e) {
+    console.log(e.target)
+    setEditable(true);
   }
 
   return (
@@ -34,11 +40,13 @@ function App() {
           </Center>
           {list.map((v, i) => {
             return (
-              <GroceryItem
+              <Item
                 key={`${i}${v.name}${v.calories}`}
                 name={v.name}
                 calories={v.calories}
                 onClick={removeItemHandler}
+                onDoubleClick={makeEditableHandler}
+                editable={editable}
               />
             );
           })}
