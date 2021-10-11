@@ -1,8 +1,8 @@
 import React from "react";
-import { Stat, StatNumber, StatHelpText } from "@chakra-ui/react"
+import { Stat, StatNumber, StatHelpText } from "@chakra-ui/react";
 import "./Item.scss";
 
-function Item({name, calories}) {
+function Item({ name, calories }) {
   return (
     <Stat>
       <StatNumber>{name}</StatNumber>
