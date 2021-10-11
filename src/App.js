@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import theme from "./theme";
 import "./App.scss";
-import Item from "./components/Item";
+import GroceryItem from "./components/GroceryItem";
 
 const initList = [
   { name: "aceite", calories: 45 },
@@ -35,7 +35,7 @@ function App() {
           </Center>
           {list.map((v, i) => {
             return (
-              <Item
+              <GroceryItem
                 key={`${i}${v.name}${v.calories}`}
                 name={v.name}
                 calories={v.calories}
