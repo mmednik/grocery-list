@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChakraProvider, Container } from "@chakra-ui/react"
+import { ChakraProvider, Container, Center, Heading, Button } from "@chakra-ui/react"
 import "./App.scss";
 import Item from "./components/Item";
 
@@ -21,15 +21,15 @@ function App() {
   return (
     <ChakraProvider>
       <Container maxW="container.md">
-        <header className="App-header">
-          <h1>Grocery List</h1>
-        </header>
+        <Center>
+          <Heading>Grocery List</Heading>
+        </Center>
         {
           list.map((v,i) => {
             return <Item key={`${i}${v.name}${v.calories}`} name={v.name} calories={v.calories} />
           })
         }
-        <button onClick={removeUnhealthyHandler} >Remove unhealthy ingredients</button>
+        <Button onClick={removeUnhealthyHandler} >Remove unhealthy ingredients</Button>
       </Container>
     </ChakraProvider>
   );
